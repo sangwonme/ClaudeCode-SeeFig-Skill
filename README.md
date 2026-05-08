@@ -1,5 +1,7 @@
 # seefig
 
+![logo](./images/logo.png)
+
 **A figure assistant for researchers.** A Claude Code skill that understands, reviews, captions, and writes about your paper figures — powered by OpenAI Vision (GPT-4o).
 
 Works anywhere Claude Code runs — macOS, Windows, and Linux.
@@ -9,6 +11,8 @@ Works anywhere Claude Code runs — macOS, Windows, and Linux.
 You're writing a paper. You have figures — charts, diagrams, photos, study results. You need a caption, a second pair of eyes, or a paragraph that ties the figure into your narrative.
 
 Instead of switching to another tool or staring at a blank line, just ask Claude.
+
+![teaser](/images/teaser.png)
 
 | Mode | What you get |
 |------|-------------|
@@ -22,7 +26,7 @@ Instead of switching to another tool or staring at a blank line, just ask Claude
 Ask Claude:
 
 ```
-Setup this skill: https://github.com/sangwonme/ClaudeCode-SeeFig.git
+Setup this skill: https://github.com/sangwonme/ClaudeCode-SeeFig-Skill.git
 ```
 
 That's it. Claude handles the rest.
@@ -71,20 +75,17 @@ Write a paragraph for figs/pipeline.png with context from sections/method.tex
 
 ## How It Works
 
-```
-User asks about a figure
-        |
-        v
-Claude picks a mode (understand / review / caption / write)
-        |
-        v
-seefig.py encodes the image as base64
-        |
-        v
-Sends to OpenAI Vision API (GPT-4o)
-        |
-        v
-Returns analysis + saves to outputs/
+```mermaid
+flowchart TD
+    A["User asks about a figure"] --> B["Claude selects mode + builds prompt"]
+    B --> C["seefig.py encodes image as base64"]
+    C --> D["Sends prompt and image to OpenAI Vision API (GPT-4o)"]
+    D --> E["Returns analysis + saves to outputs/"]
+
+    B -.- B1["understand"]
+    B -.- B2["review"]
+    B -.- B3["caption"]
+    B -.- B4["write"]
 ```
 
 ## File Structure
