@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -u .claude/skills/vlm/scripts/vlm_figure.py --mode understand -i sample.jpg)",
+      "Bash(pip install:*)",
+      "Bash(cd:*)",
+      "Bash(python -u .claude/skills/vlm/scripts/vlm_figure.py --mode understand -i .claude/skills/vlm/sample.jpg)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ]
+  }
+}
